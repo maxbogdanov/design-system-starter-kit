@@ -1,0 +1,297 @@
+<!--
+  Templates leverage Nunjucks, a powerful templating language:
+  https://mozilla.github.io/nunjucks/
+
+  # Don't want to use Nunjucks?
+    It is entirely optional. Feel free to use normal HTML instead!
+-->
+
+<!--
+  Extend the global template
+-->
+{% extends "_template.html" %}
+
+<!--
+  Page content (gets injected into the template)
+-->
+{% block content %}
+<script src="/scripts/app.js"></script>
+<script type="text/javascript">
+  var thisTab = document.getElementById("tab-matching-rules");
+  console.log(thisTab);
+  tabActiveReset(thisTab);
+  tabActiveSet(thisTab);
+</script>
+
+<div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_3-of-4">
+    <article class="slds-card">
+      <ol class="slds-setup-assistant">
+        <li class="slds-setup-assistant__item">
+          <article class="slds-setup-assistant__step">
+            <div class="slds-setup-assistant__step-summary">
+              <div class="slds-media">
+                <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                  <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">
+                    Configure Matching Rules
+                  </h3>
+                  <p>
+                    A matching rule compares field values to determine whether a
+                    record is similar enough to existing records to be considered a
+                    duplicate. For example, a matching rule can specify that if the
+                    Email and Phone values of two records match exactly, the records
+                    might be duplicates.<br /><br />Click 'Create Matching Rule'
+                    button to create new rule for your object.
+                  </p>
+                </div>
+                <div class="slds-media__figure slds-media__figure_reverse">
+                  <button class="slds-button slds-button_outline-brand">
+                    Create Matching Rule
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ol>
+    </article>
+
+    <article class="slds-card">
+      <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+          <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-standard-account">
+              <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+              </svg>
+              <span class="slds-assistive-text">account</span>
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-card__header-title">
+              <a href="javascript:void(0);" class="slds-card__header-link slds-truncate">
+                <span>Account Matching Rules (1)</span>
+              </a>
+            </h2>
+          </div>
+          <div class="slds-no-flex">
+            <button class="slds-button slds-button_neutral">New</button>
+          </div>
+        </header>
+      </div>
+      <div class="slds-card__body">
+        <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid">
+          <thead>
+            <tr class="slds-line-height_reset">
+              <th class="" scope="col">
+                <div class="slds-truncate">Name</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Fields</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Scope</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Status</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="slds-hint-parent">
+              <th scope="row">
+                <div class="slds-truncate">
+                  <a href="matching-rules-new-rule.html" tabindex="-1">Match by Company Name (clickable)</a>
+                </div>
+              </th>
+              <td role="gridcell">
+                <div class="slds-truncate">[Name]</div>
+              </td>
+              <td role="gridcell">
+                <div class="slds-truncate">
+                  CreatedDate < 90 days </div>
+              </td>
+              <td role="gridcell">
+                <div class="slds-truncate">
+                  Active
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="slds-card__footer">
+        <a class="slds-card__footer-action" href="javascript:void(0);">View All
+          <span class="slds-assistive-text">accounts</span>
+        </a>
+      </footer>
+    </article>
+
+    <article class="slds-card">
+      <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+          <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-standard-contact">
+              <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+              </svg>
+              <span class="slds-assistive-text">Contact Matching Rules (2)</span>
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-card__header-title">
+              <a href="javascript:void(0);" class="slds-card__header-link slds-truncate">
+                <span>Contact Matching Rules (2)</span>
+              </a>
+            </h2>
+          </div>
+          <div class="slds-no-flex">
+            <button class="slds-button slds-button_neutral">New</button>
+          </div>
+        </header>
+      </div>
+      <div class="slds-card__body">
+        <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid">
+          <thead>
+            <tr class="slds-line-height_reset">
+              <th class="" scope="col">
+                <div class="slds-truncate">Name</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Fields</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Scope</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Status</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="slds-hint-parent">
+              <th scope="row">
+                <div class="slds-truncate">
+                  <a href="javascript:void(0);" tabindex="-1">Match by Email</a>
+                </div>
+              </th>
+              <td role="gridcell">
+                <div class="slds-truncate">[Email]</div>
+              </td>
+              <td role="gridcell">
+                <div class="slds-truncate">
+                  CreatedDate < 7 days </div>
+              </td>
+              <td role="gridcell">
+                <div class="slds-truncate">
+                  Active
+                </div>
+              </td>
+            </tr>
+            <tr class="slds-hint-parent">
+              <th scope="row">
+                <div class="slds-truncate">
+                  <a href="javascript:void(0);" tabindex="-1">Match by First Name and Last Name</a>
+                </div>
+              </th>
+              <td role="gridcell">
+                <div class="slds-truncate">[FirstName AND LastName]</div>
+              </td>
+              <td role="gridcell">
+                <div class="slds-truncate">
+                  CreatedDate < 7 days </div>
+              </td>
+              <td role="gridcell">
+                <div class="slds-truncate">
+                  Merge job running
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="slds-card__footer">
+        <a class="slds-card__footer-action" href="javascript:void(0);">View All
+          <span class="slds-assistive-text">Contacts</span>
+        </a>
+      </footer>
+    </article>
+
+    <article class="slds-card">
+      <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+          <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-standard-opportunity">
+              <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+              </svg>
+              <span class="slds-assistive-text">Custom Object</span>
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-card__header-title">
+              <a href="javascript:void(0);" class="slds-card__header-link slds-truncate">
+                <span>Custom Object Matching Rules (1)</span>
+              </a>
+            </h2>
+          </div>
+          <div class="slds-no-flex">
+            <button class="slds-button slds-button_neutral">New</button>
+          </div>
+        </header>
+      </div>
+      <div class="slds-card__body">
+        <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid">
+          <thead>
+            <tr class="slds-line-height_reset">
+              <th class="" scope="col">
+                <div class="slds-truncate">Name</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Fields</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Scope</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">Status</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="slds-hint-parent">
+              <th scope="row">
+                <div class="slds-truncate">
+                  <a href="javascript:void(0);" tabindex="-1">Match by Opportunity Name</a>
+                </div>
+              </th>
+              <td role="gridcell">
+                <div class="slds-truncate">[Name]</div>
+              </td>
+              <td role="gridcell">
+                <div class="slds-truncate">
+                  CloseDate IN Current Quarter
+                </div>
+              </td>
+              <td role="gridcell">
+                <div class="slds-truncate">
+                  Active
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="slds-card__footer">
+        <a class="slds-card__footer-action" href="javascript:void(0);">View All
+          <span class="slds-assistive-text">Contacts</span>
+        </a>
+      </footer>
+    </article>
+  </div>
+
+  <div class="slds-col slds-size_1-of-4 ">
+    {% include "assistant.html" %}
+  </div>
+</div>
+{% endblock %}

@@ -54,8 +54,8 @@ Array.from(dropdownButtons)
 
 const tabs = (variant) => document.querySelectorAll(`.slds-tabs_${variant} [role=tablist] [role=tab]`)
 const tabActiveReset = (tab) => Array.from(tab.parentNode.parentNode.querySelectorAll('li'))
-  .forEach((element) => element.classList.remove('slds-active'))
-const tabActiveSet = (tab) => tab.parentNode.classList.add('slds-active')
+  .forEach((element) => element.classList.remove('slds-is-active'))
+const tabActiveSet = (tab) => tab.parentNode.classList.add('slds-is-active')
 const tabPanelsReset = (tab) => Array.from(tab.parentNode.parentNode.parentNode.querySelectorAll('[role="tabpanel"]'))
   .forEach((tabpanel) => {
     tabpanel.classList.remove('slds-show')

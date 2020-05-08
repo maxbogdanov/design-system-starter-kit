@@ -1,0 +1,454 @@
+<!--   Templates leverage Nunjucks, a powerful templating language:   https://mozilla.github.io/nunjucks/    # Don't want to use Nunjucks?     It is entirely optional. Feel free to use normal HTML instead! -->
+<!--   Extend the global template -->
+{% extends "_template.html" %}
+<!--   Page content (gets injected into the template) -->
+{% block content %}
+<script src="/scripts/app.js"></script>
+<script type="text/javascript">
+  var thisTab = document.getElementById("tab-matching-rules");
+  console.log(thisTab);
+  tabActiveReset(thisTab);
+  tabActiveSet(thisTab);
+</script>
+
+{% include "matching-rules.html" %}
+
+<!-- Modal -->
+<section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+  <div class="slds-modal__container">
+    <header class="slds-modal__header">
+      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="javascript:window.location='matching-rules.html'">
+        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+        </svg>
+        <span class="slds-assistive-text">Close</span>
+      </button>
+      <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate"> Edit Matching Rule </h2>
+    </header>
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+      <!-- Details Section -->
+      <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+          <span class="slds-truncate slds-p-horizontal_small" title="Details">Details</span>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content slds-p-around_medium">
+          <!-- Object selection -->
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="combobox-id-6">Object</label>
+            <div class="slds-form-element__control">
+              <div class="slds-combobox_container slds-size_small">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                  <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                    <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Account" />
+                    <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                      <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Name -->
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="text-input-id-1">
+              <abbr class="slds-required" title="required">* </abbr>Rule
+              Name</label>
+            <div class="slds-form-element__control">
+              <input type="text" id="text-input-id-1" placeholder="Rule Name" required="" class="slds-input" value="Match by Company Name" />
+            </div>
+          </div>
+          <!-- Description -->
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="textarea-id-01">Description</label>
+            <div class="slds-form-element__control">
+              <textarea id="textarea-id-01" class="slds-textarea" placeholder="Description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Scope Section -->
+      <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+          <span class="slds-truncate slds-p-horizontal_small" title="Records Matching Criteria">Records Scope</span>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content slds-p-around_medium">
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Field</label>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Criteria</label>
+            </div>
+          </div>
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Field selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Created Date" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Scope selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Last 7 days" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-p-top_x-small">
+            <!-- Add new -->
+            <button class="slds-button slds-button_icon slds-button_icon-brand">
+              <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+              </svg>
+            </button>
+          </div>
+          <div class="slds-p-top_x-small">
+            <a>Add Custom Logic</a>
+          </div>
+        </div>
+      </div>
+      <!-- Matching Criteria Section -->
+      <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+          <span class="slds-truncate slds-p-horizontal_small" title="Records Matching Criteria">Records Matching Criteria</span>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content slds-p-around_medium">
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Field</label>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Matching Method</label>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Match Blank Fields</label>
+            </div>
+          </div>
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Field selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Name" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Method selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Exact" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Match blank option -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-checkbox">
+                    <input type="checkbox" name="options" id="checkbox-unique-id-3" value="checkbox-unique-id-3" checked="" />
+                    <label class="slds-checkbox__label" for="checkbox-unique-id-3">
+                      <span class="slds-checkbox_faux"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-p-top_x-small">
+            <!-- Add new -->
+            <button class="slds-button slds-button_icon slds-button_icon-brand">
+              <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+              </svg>
+            </button>
+          </div>
+          <div class="slds-p-top_x-small">
+            <a>Add Custom Logic</a>
+          </div>
+        </div>
+      </div>
+      <!-- Master Selection Section -->
+      <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+          <span class="slds-truncate slds-p-horizontal_small" title="Master Record Criteria">Master Record Criteria</span>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content slds-p-around_medium">
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Field</label>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Criteria</label>
+            </div>
+          </div>
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Field selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Created Date" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+              <!-- Criteria selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select Criteria" readonly="" value="Oldest" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-p-top_x-small">
+            <!-- Add new -->
+            <button class="slds-button slds-button_icon slds-button_icon-brand">
+              <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Override Field Values Section -->
+      <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+          <span class="slds-truncate slds-p-horizontal_small" title="Master Record Criteria">Override Merged Values</span>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content slds-p-around_medium">
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_3-of-3">
+              <span class="slds-icon_container slds-icon-utility-light_bulb">
+                <svg class="slds-icon slds-icon-text-default slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#light_bulb"></use>
+                </svg>
+                Master Record Criteria is used to override empty values. Use rules below to configure custom overrides for this rule.
+              </span>
+            </div>
+          </div>
+          <div class="slds-grid slds-gutters slds-p-top_small">
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Field</label>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <label class="slds-form-element__label">Criteria</label>
+            </div>
+          </div>
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Field selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Phone Number" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+              <!-- Criteria selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select Criteria" readonly="" value="Newest" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- line 2 -->
+          <div class="slds-grid slds-gutters slds-p-top_x-small">
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Field selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Company Email" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+              <!-- Criteria selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select Criteria" readonly="" value="Newest" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- line 3 -->
+          <div class="slds-grid slds-gutters slds-p-top_x-small">
+            <div class="slds-col slds-size_1-of-3">
+              <!-- Field selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select an Option" readonly="" value="Primary Contact" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+              <!-- Criteria selection -->
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" id="combobox-id-6" aria-activedescendant="option1" aria-controls="listbox-id-6" autocomplete="off" role="textbox" placeholder="Select Criteria" readonly="" value="Never" />
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                          <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-p-top_x-small">
+            <!-- Add new -->
+            <button class="slds-button slds-button_icon slds-button_icon-brand">
+              <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="slds-modal__footer">
+      <button class="slds-button slds-button_neutral" onclick="javascript:window.location='matching-rules.html'">
+        Cancel
+      </button>
+      <button class="slds-button slds-button_brand" onclick="javascript:window.location='matching-rules.html'">
+        Save
+      </button>
+    </footer>
+  </div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+<!--  -->
+{% endblock %}

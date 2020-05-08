@@ -1,0 +1,488 @@
+<!--
+  Templates leverage Nunjucks, a powerful templating language:
+  https://mozilla.github.io/nunjucks/
+
+  # Don't want to use Nunjucks?
+    It is entirely optional. Feel free to use normal HTML instead!
+-->
+
+<!--
+  Extend the global template
+-->
+{% extends "_template.html" %}
+
+onclick="tabActiveReset(this);tabActiveSet(this);"
+
+<!--
+  Page content (gets injected into the template)
+-->
+{% block content %}
+<script src="/scripts/app.js"></script>
+<script type="text/javascript">
+  var thisTab = document.getElementById('tab-scheduled-jobs');
+  console.log(thisTab);
+  tabActiveReset(thisTab);
+  tabActiveSet(thisTab);
+</script>
+
+
+<div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_3-of-4">
+
+    <article class="slds-card">
+      <ol class="slds-setup-assistant">
+        <li class="slds-setup-assistant__item">
+          <article class="slds-setup-assistant__step">
+            <div class="slds-setup-assistant__step-summary">
+              <div class="slds-media">
+                <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                  <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">
+                    Schedule Merge Jobs
+                  </h3>
+                  <p>
+                    To automate a merge process, you can use the Create Job screen. The Job Schedule feature is only available in Corporate edition. You can use merge jobs to automatically run processes on a recurring basis. When you schedule jobs, you define the condition or conditions that cause the job to begin.
+                  </p>
+                </div>
+                <div class="slds-media__figure slds-media__figure_reverse">
+                  <button class="slds-button slds-button_outline-brand">
+                    Create Job
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ol>
+    </article>
+
+    <div class="slds-card">
+      <ul class="slds-accordion">
+        <li class="slds-accordion__list-item slds-p-around_small">
+          <section class="slds-accordion__section slds-is-open">
+            <div class="slds-accordion__summary">
+              <h3 class="slds-accordion__summary-heading">
+                <button aria-controls="accordion-details-02" aria-expanded="true" class="slds-button slds-button_reset slds-accordion__summary-action">
+                  <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                  </svg>
+                  <span class="slds-accordion__summary-content">Future Jobs</span>
+                </button>
+              </h3>
+            </div>
+            <div class="slds-accordion__content" id="accordion-details-02">
+              <!--  -->
+              <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Matching Rule</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Matching Rule column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-15" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Object Name</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Account Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-16" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Scope</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Close Date column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-17" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Scheduled Run Date</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Stage column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-18" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th class="" scope="col" style="width:3.25rem">
+                      <div class="slds-truncate slds-assistive-text">Actions</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr aria-selected="false" class="slds-hint-parent">
+                    <th scope="row">
+                      <div class="slds-truncate">
+                        <a href="javascript:void(0);" tabindex="0">Match by Company Name</a>
+                      </div>
+                    </th>
+                    <td role="gridcell">
+                      <div class="slds-truncate">Account</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">CreatedDate < 90 days</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">2020-05-10 16:50</div>
+                    </td>
+                    <td role="gridcell">
+                      <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" tabindex="0">
+                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                        </svg>
+                        <span class="slds-assistive-text">More actions for Acme - 1,200 Widgets</span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--  -->
+            </div>
+          </section>
+        </li>
+        <li class="slds-accordion__list-item slds-p-around_small">
+          <section class="slds-accordion__section slds-is-open">
+            <div class="slds-accordion__summary">
+              <h3 class="slds-accordion__summary-heading">
+                <button aria-controls="accordion-details-01" aria-expanded="true" class="slds-button slds-button_reset slds-accordion__summary-action">
+                  <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                  </svg>
+                  <span class="slds-accordion__summary-content">Running Jobs</span>
+                </button>
+              </h3>
+            </div>
+            <div class="slds-accordion__content" id="accordion-details-01">
+              <!--  -->
+              <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Matching Rule</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Matching Rule column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-15" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Object Name</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Account Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-16" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Scope</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Close Date column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-17" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Start Date</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Stage column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-18" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Records to Process</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Confidence column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-19" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th class="" scope="col" style="width:3.25rem">
+                      <div class="slds-truncate slds-assistive-text">Actions</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr aria-selected="false" class="slds-hint-parent">
+                    <th scope="row">
+                      <div class="slds-truncate">
+                        <a href="javascript:void(0);" tabindex="0">Match by Email</a>
+                      </div>
+                    </th>
+                    <td role="gridcell">
+                      <div class="slds-truncate">Contact</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">CreatedDate < 7 days</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">2020-05-08 00:50</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">18023</div>
+                    </td>
+                    <td role="gridcell">
+                      <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" tabindex="0">
+                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                        </svg>
+                        <span class="slds-assistive-text">More actions for Acme - 1,200 Widgets</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr aria-selected="false" class="slds-hint-parent">
+                    <th scope="row">
+                      <div class="slds-truncate">
+                        <a href="javascript:void(0);" tabindex="0">Match by First Name and Last Name</a>
+                      </div>
+                    </th>
+                    <td role="gridcell">
+                      <div class="slds-truncate">Contact</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">CreatedDate < 7 days</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">2020-05-09 02:30</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">18023</div>
+                    </td>
+                    <td role="gridcell">
+                      <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" tabindex="0">
+                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                        </svg>
+                        <span class="slds-assistive-text">More actions for Acme - 1,200 Widgets</span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--  -->
+            </div>
+          </section>
+        </li>
+        <li class="slds-accordion__list-item slds-p-around_small">
+          <section class="slds-accordion__section slds-is-open">
+            <div class="slds-accordion__summary">
+              <h3 class="slds-accordion__summary-heading">
+                <button aria-controls="accordion-details-01" aria-expanded="true" class="slds-button slds-button_reset slds-accordion__summary-action">
+                  <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                  </svg>
+                  <span class="slds-accordion__summary-content">Past Jobs</span>
+                </button>
+              </h3>
+            </div>
+            <div class="slds-accordion__content" id="accordion-details-01">
+              <!--  -->
+              <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Matching Rule</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Matching Rule column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-15" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Object Name</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Account Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-16" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Scope</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Close Date column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-17" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Run Date</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Stage column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-18" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Records Processed</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Confidence column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-19" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Groups</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Amount column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-20" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                      <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                          <span class="slds-truncate">Matches</span>
+                        </div>
+                      </a>
+                      <div class="slds-resizable">
+                        <input type="range" aria-label="Contact column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-21" max="1000" min="20" tabindex="0" />
+                        <span class="slds-resizable__handle">
+                          <span class="slds-resizable__divider"></span>
+                        </span>
+                      </div>
+                    </th>
+                    <th class="" scope="col" style="width:3.25rem">
+                      <div class="slds-truncate slds-assistive-text">Actions</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr aria-selected="false" class="slds-hint-parent">
+                    <th scope="row">
+                      <div class="slds-truncate">
+                        <a href="javascript:void(0);" tabindex="0">Match by Company Name</a>
+                      </div>
+                    </th>
+                    <td role="gridcell">
+                      <div class="slds-truncate">Account</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">CreatedDate < 90 days</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">2020-05-05 16:50</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">8132</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">124</div>
+                    </td>
+                    <td role="gridcell">
+                      <div class="slds-truncate">536</div>
+                    </td>
+                    <td role="gridcell">
+                      <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" tabindex="0">
+                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                        </svg>
+                        <span class="slds-assistive-text">More actions for Acme - 1,200 Widgets</span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--  -->
+            </div>
+          </section>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slds-col slds-size_1-of-4 ">
+    {% include "assistant.html" %}
+  </div>
+</div>
+
+{% endblock %}

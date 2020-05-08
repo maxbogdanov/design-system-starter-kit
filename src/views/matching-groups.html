@@ -1,0 +1,177 @@
+<!--
+  Templates leverage Nunjucks, a powerful templating language:
+  https://mozilla.github.io/nunjucks/
+
+  # Don't want to use Nunjucks?
+    It is entirely optional. Feel free to use normal HTML instead!
+-->
+
+<!--
+  Extend the global template
+-->
+{% extends "_template.html" %}
+
+onclick="tabActiveReset(this);tabActiveSet(this);"
+
+<!--
+  Page content (gets injected into the template)
+-->
+{% block content %}
+<script src="/scripts/app.js"></script>
+<script type="text/javascript">
+  var thisTab = document.getElementById('tab-matching-groups');
+  console.log(thisTab);
+  tabActiveReset(thisTab);
+  tabActiveSet(thisTab);
+</script>
+
+<div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_3-of-4">
+
+    <div class="slds-card">
+      <ul class="slds-accordion">
+        <li class="slds-accordion__list-item">
+          <section class="slds-accordion__section">
+            <div class="slds-accordion__summary">
+              <h3 class="slds-accordion__summary-heading">
+                <button aria-controls="accordion-details-01" aria-expanded="false" class="slds-button slds-button_reset slds-accordion__summary-action">
+                  <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                  </svg>
+                  <span class="slds-accordion__summary-content" title="Account Groups">Account Groups</span>
+                </button>
+              </h3>
+            </div>
+            <div hidden="" class="slds-accordion__content" id="accordion-details-01">
+              <!--  -->
+            </div>
+          </section>
+        </li>
+        <li class="slds-accordion__list-item">
+          <section class="slds-accordion__section slds-is-open">
+            <div class="slds-accordion__summary">
+              <h3 class="slds-accordion__summary-heading">
+                <button aria-controls="accordion-details-02" aria-expanded="true" class="slds-button slds-button_reset slds-accordion__summary-action">
+                  <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                  </svg>
+                  <span class="slds-accordion__summary-content" title="Contact Groups">Contact Groups</span>
+                </button>
+              </h3>
+            </div>
+            <div class="slds-accordion__content" id="accordion-details-02">
+              <!--  -->
+              <ul class="slds-grid slds-wrap slds-grid_pull-padded">
+                <li class="slds-box  slds-m-around_small slds-size_1-of-1 slds-medium-size_1-of-4">
+                  <article class="slds-tile slds-media slds-card__tile slds-hint-parent">
+                    <div class="slds-media__figure">
+                      <span class="slds-icon_container slds-icon-standard-contact" title="Description of icon when needed">
+                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Contact</span>
+                      </span>
+                    </div>
+                    <div class="slds-media__body">
+                      <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                        <h3 class="slds-tile__title slds-truncate" title="Related Record Title 1">
+                          <a href="javascript:void(0);">Match by Email</a>
+                        </h3>
+                        <div class="slds-shrink-none">
+                          <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More options">
+                            <svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                            </svg>
+                            <span class="slds-assistive-text">More options</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="slds-tile__detail">
+                        <dl class="slds-list_horizontal slds-wrap">
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Fields Criteria:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for first label">[Email]</dd>
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Scope:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for second label">Created in last 7 days</dd>
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Groups:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for second label">651</dd>
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Matches:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for second label">1379</dd>
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Job Run Date:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for second label">2020-05-05</dd>
+                        </dl>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="slds-box slds-size_1-of-1 slds-m-around_small slds-medium-size_1-of-4">
+                  <article class="slds-tile slds-media slds-card__tile slds-hint-parent">
+                    <div class="slds-media__figure">
+                      <span class="slds-icon_container slds-icon-standard-contact" title="Description of icon when needed">
+                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Contact</span>
+                      </span>
+                    </div>
+                    <div class="slds-media__body">
+                      <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                        <h3 class="slds-tile__title slds-truncate" title="Related Record Title 1">
+                          <a href="javascript:void(0);">Match by First Name and Last Name</a>
+                        </h3>
+                        <div class="slds-shrink-none">
+                          <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More options">
+                            <svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                            </svg>
+                            <span class="slds-assistive-text">More options</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="slds-tile__detail">
+                        <dl class="slds-list_horizontal slds-wrap">
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Fields Criteria:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for first label">[FirstName AND LastName]</dd>
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Scope:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for second label">Created in last 7 days</dd>
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Groups:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for second label">29</dd>
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Matches:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for second label">168</dd>
+                          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Job Run Date:</dt>
+                          <dd class="slds-item_detail slds-truncate" title="Description for second label">2020-05-05</dd>
+                        </dl>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+              <!--  -->
+            </div>
+          </section>
+        </li>
+        <li class="slds-accordion__list-item">
+          <section class="slds-accordion__section">
+            <div class="slds-accordion__summary">
+              <h3 class="slds-accordion__summary-heading">
+                <button aria-controls="accordion-details-03" aria-expanded="false" class="slds-button slds-button_reset slds-accordion__summary-action">
+                  <svg class="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                  </svg>
+                  <span class="slds-accordion__summary-content" title="Custom Object Groups">Custom Object Groups</span>
+                </button>
+              </h3>
+            </div>
+            <div hidden="" class="slds-accordion__content" id="accordion-details-03">
+              <!--  -->
+            </div>
+          </section>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slds-col slds-size_1-of-4 ">
+    {% include "assistant.html" %}
+  </div>
+</div>
+{% endblock %}
