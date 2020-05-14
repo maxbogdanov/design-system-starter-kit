@@ -90,29 +90,31 @@ gulp.task('clean', () => del(['dist'], { dot: true }))
 
 // Static Server (development)
 gulp.task('default',
-  gulp.series('clean', gulp.parallel('assets', 'views', 'styles', 'scripts', 'favicon'),
-  function () {
-    browserSync({
-      // The starter kit opens itself up in a new browser tab every time the app starts.
-      // Uncomment the next line to prevent this behavior:
-      open: false,
-      notify: false,
-      server: 'dist'
-    })
-    gulp.watch('src/styles/**/*.scss', gulp.series('styles'))
-    gulp.watch([
-      'src/views/**/*.html',
-      'src/views/data/*.json'
-    ], gulp.series('views'))
-    gulp.watch('src/assets/**/*.{woff,woff2,txt,jpg,png,gif,svg}', gulp.series('assets'))
-    gulp.watch('src/scripts/**/*.js', gulp.series('scripts'))
-    gulp.watch([
-      'dist/**/*.html',
-      'dist/scripts/**/*.js',
+  gulp.series('clean', gulp.parallel('assets', 'views', 'styles', 'scripts', 'favicon')
+  // ,
+  // function () {
+  //   browserSync({
+  //     // The starter kit opens itself up in a new browser tab every time the app starts.
+  //     // Uncomment the next line to prevent this behavior:
+  //     open: false,
+  //     notify: false,
+  //     server: 'dist'
+  //   })
+  //   gulp.watch('src/styles/**/*.scss', gulp.series('styles'))
+  //   gulp.watch([
+  //     'src/views/**/*.html',
+  //     'src/views/data/*.json'
+  //   ], gulp.series('views'))
+  //   gulp.watch('src/assets/**/*.{woff,woff2,txt,jpg,png,gif,svg}', gulp.series('assets'))
+  //   gulp.watch('src/scripts/**/*.js', gulp.series('scripts'))
+  //   gulp.watch([
+  //     'dist/**/*.html',
+  //     'dist/scripts/**/*.js',
 
-      // Note: we're not watching icons and fonts changes,
-      // as they're slowing down the task
-      'dist/assets/*.{woff,woff2,txt,jpg,png,gif,svg}',
-      'dist/assets/styles/*.css'
-    ]).on('change', browserSync.reload)
-  }))
+  //     // Note: we're not watching icons and fonts changes,
+  //     // as they're slowing down the task
+  //     'dist/assets/*.{woff,woff2,txt,jpg,png,gif,svg}',
+  //     'dist/assets/styles/*.css'
+  //   ]).on('change', browserSync.reload)
+  // }
+  ))
